@@ -1,0 +1,30 @@
+{
+    "kind": "collectionType",
+    "collectionName": "subscriptions",
+    "info": {
+        "singularName": "subscription",
+        "pluralName": "subscriptions",
+        "displayName": "Subscription",
+        "description": "Subscription plans"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "planName": {
+            "type": "string",
+            "required": true
+        },
+        "price": {
+            "type": "decimal",
+            "required": true
+        },
+        "stripePriceId": {
+            "type": "string"
+        },
+        "features": {
+            "type": "richtext"
+        }
+    }
+}
