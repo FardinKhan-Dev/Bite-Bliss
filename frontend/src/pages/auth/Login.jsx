@@ -38,37 +38,37 @@ const Login = () => {
         try {
             // Adapted auth call
             await login(data.email, data.password);
-            toast.success('Welcome back!');
-            navigate('/');
+            toast.success('Welcome back! 🎉');
+            navigate('/recipes');
         } catch (err) {
             toast.error(err?.response?.data?.error?.message || 'Login failed');
         }
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-background text-foreground p-6">
-            <div className="w-full max-w-md bg-white/5 backdrop-blur-lg rounded-3xl p-8 border border-white/10 shadow-xl">
-                <h2 className="text-3xl font-display font-bold text-center mb-2">Welcome Back</h2>
-                <p className="text-gray-400 text-center mb-8">Sign in to your account</p>
+        <div className="min-h-screen flex items-center justify-center text-foreground bg-white dark:bg-neutral-900 p-6 mt-8">
+            <div className="w-full max-w-md bg-white dark:bg-neutral-800 backdrop-blur-lg rounded-3xl p-8 border border-neutral-200 dark:border-neutral-700 shadow-xl">
+                <h2 className="text-3xl font-display font-bold text-center mb-2 text-neutral-900 dark:text-white">Welcome Back</h2>
+                <p className="text-neutral-600 dark:text-neutral-400 text-center mb-8">Sign in to your account</p>
 
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                     <div>
-                        <label className="block text-sm font-medium text-gray-300 mb-2">Email</label>
+                        <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">Email</label>
                         <input
                             {...register('email')}
                             type="email"
-                            className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors text-white"
+                            className="w-full bg-neutral-100 dark:bg-gray-800 border border-neutral-200 dark:border-gray-700 rounded-xl px-4 py-3 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors text-neutral-900 dark:text-white placeholder:text-neutral-500 dark:placeholder:text-gray-400"
                             placeholder="you@example.com"
                         />
                         {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-300 mb-2">Password</label>
+                        <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">Password</label>
                         <input
                             {...register('password')}
                             type="password"
-                            className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors text-white"
+                            className="w-full bg-neutral-100 dark:bg-gray-800 border border-neutral-200 dark:border-gray-700 rounded-xl px-4 py-3 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors text-neutral-900 dark:text-white placeholder:text-neutral-500 dark:placeholder:text-gray-400"
                             placeholder="••••••••"
                         />
                         {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>}
@@ -87,13 +87,13 @@ const Login = () => {
                             <div className="w-full border-t border-gray-700"></div>
                         </div>
                         <div className="relative flex justify-center text-sm">
-                            <span className="px-2 bg-transparent text-gray-500">Or continue with</span>
+                            <span className="px-2 bg-white dark:bg-neutral-800 text-gray-500">Or continue with</span>
                         </div>
                     </div>
 
                     <a
                         href={`${import.meta.env.VITE_API_URL || 'http://localhost:1337/api'}/connect/google`}
-                        className="w-full flex items-center justify-center py-3 px-4 border border-gray-600 rounded-xl shadow-sm text-sm font-medium text-gray-300 bg-black/30 hover:bg-black/50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all duration-200"
+                        className="w-full flex items-center justify-center py-3 px-4 border border-neutral-300 dark:border-neutral-700 rounded-xl shadow-sm text-sm font-medium text-neutral-900 dark:text-white bg-white dark:bg-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all duration-200"
                     >
                         <svg className="h-5 w-5 mr-3" viewBox="0 0 24 24">
                             <path
@@ -101,7 +101,7 @@ const Login = () => {
                                 d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.748L12.545,10.239z"
                             />
                         </svg>
-                        Google
+                        Sign In with Google
                     </a>
                 </form>
 

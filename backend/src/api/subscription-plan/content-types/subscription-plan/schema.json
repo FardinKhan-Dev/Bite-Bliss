@@ -1,0 +1,67 @@
+{
+    "kind": "collectionType",
+    "collectionName": "subscription_plans",
+    "info": {
+        "singularName": "subscription-plan",
+        "pluralName": "subscription-plans",
+        "displayName": "Subscription Plan",
+        "description": "Subscription plans for readers"
+    },
+    "options": {
+        "draftAndPublish": false
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "name": {
+            "type": "string",
+            "required": true,
+            "unique": true
+        },
+        "slug": {
+            "type": "uid",
+            "targetField": "name"
+        },
+        "description": {
+            "type": "text"
+        },
+        "price": {
+            "type": "decimal",
+            "required": true,
+            "default": 0
+        },
+        "yearlyPrice": {
+            "type": "decimal",
+            "default": 0
+        },
+        "stripePriceId": {
+            "type": "string"
+        },
+        "stripeYearlyPriceId": {
+            "type": "string"
+        },
+        "features": {
+            "type": "json",
+            "required": true
+        },
+        "limits": {
+            "type": "json"
+        },
+        "tier": {
+            "type": "integer",
+            "required": true,
+            "default": 0,
+            "min": 0,
+            "max": 2
+        },
+        "isActive": {
+            "type": "boolean",
+            "default": true
+        },
+        "user_subscriptions": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::user-subscription.user-subscription",
+            "mappedBy": "plan"
+        }
+    }
+}

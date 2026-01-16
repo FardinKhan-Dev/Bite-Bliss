@@ -1,4 +1,9 @@
 import path from 'path';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 export default ({ env }) => {
   const client = env('DATABASE_CLIENT', 'sqlite');
@@ -44,7 +49,7 @@ export default ({ env }) => {
     },
     sqlite: {
       connection: {
-        filename: path.join(process.cwd(), env('DATABASE_FILENAME', '.tmp/data.db')),
+        filename: path.join(__dirname, '..', env('DATABASE_FILENAME', '.tmp/data.db')),
       },
       useNullAsDefault: true,
     },

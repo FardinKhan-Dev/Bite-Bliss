@@ -1,31 +1,31 @@
 {
-    "kind": "collectionType",
-    "collectionName": "categories",
-    "info": {
-        "singularName": "category",
-        "pluralName": "categories",
-        "displayName": "Category",
-        "description": "Recipe categories"
+  "kind": "collectionType",
+  "collectionName": "categories",
+  "info": {
+    "singularName": "category",
+    "pluralName": "categories",
+    "displayName": "Category",
+    "description": "Recipe categories"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
     },
-    "options": {
-        "draftAndPublish": true
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
     },
-    "pluginOptions": {},
-    "attributes": {
-        "name": {
-            "type": "string",
-            "required": true,
-            "unique": true
-        },
-        "slug": {
-            "type": "uid",
-            "targetField": "name"
-        },
-        "recipes": {
-            "type": "relation",
-            "relation": "oneToMany",
-            "target": "api::recipe.recipe",
-            "mappedBy": "category"
-        }
+    "recipes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::recipe.recipe",
+      "mappedBy": "category"
     }
+  }
 }

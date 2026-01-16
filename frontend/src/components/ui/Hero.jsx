@@ -10,7 +10,7 @@ export default function Hero() {
                     backgroundImage: "url('https://images.unsplash.com/photo-1556910103-1c02745a30bf?q=80&w=2940&auto=format&fit=crop')",
                 }}
             >
-                <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/30" />
+                <div className="absolute inset-0 bg-linear-to-b from-black/60 to-black/30" />
             </div>
 
             {/* Content */}
@@ -21,7 +21,7 @@ export default function Hero() {
                     transition={{ duration: 0.8 }}
                     className="text-5xl md:text-7xl font-black text-white mb-6 tracking-tight drop-shadow-2xl"
                 >
-                    Master the Art of <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">Cooking</span>
+                    Master the Art of <span className="text-transparent bg-clip-text bg-linear-to-r from-amber-400 to-orange-500">Cooking</span>
                 </motion.h1>
 
                 <motion.p

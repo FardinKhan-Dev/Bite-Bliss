@@ -482,8 +482,8 @@ export interface ApiRecipeRecipe extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
     image: Schema.Attribute.Media<'images'>;
-    ingredients: Schema.Attribute.RichText;
-    instructions: Schema.Attribute.RichText;
+    ingredients: Schema.Attribute.Blocks;
+    instructions: Schema.Attribute.Blocks;
     isPremium: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -498,6 +498,64 @@ export interface ApiRecipeRecipe extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    viewCount: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+  };
+}
+
+export interface ApiSubscriptionPlanSubscriptionPlan
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'subscription_plans';
+  info: {
+    description: 'Subscription plans for readers';
+    displayName: 'Subscription Plan';
+    pluralName: 'subscription-plans';
+    singularName: 'subscription-plan';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    features: Schema.Attribute.JSON & Schema.Attribute.Required;
+    isActive: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    limits: Schema.Attribute.JSON;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::subscription-plan.subscription-plan'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    price: Schema.Attribute.Decimal &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<0>;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'name'>;
+    stripePriceId: Schema.Attribute.String;
+    stripeYearlyPriceId: Schema.Attribute.String;
+    tier: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 2;
+          min: 0;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<0>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    user_subscriptions: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::user-subscription.user-subscription'
+    >;
+    yearlyPrice: Schema.Attribute.Decimal & Schema.Attribute.DefaultTo<0>;
   };
 }
 
@@ -531,6 +589,57 @@ export interface ApiSubscriptionSubscription
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiUserSubscriptionUserSubscription
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'user_subscriptions';
+  info: {
+    description: 'Reader subscription records';
+    displayName: 'User Subscription';
+    pluralName: 'user-subscriptions';
+    singularName: 'user-subscription';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    cancelAtPeriodEnd: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<false>;
+    canceledAt: Schema.Attribute.DateTime;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    currentPeriodEnd: Schema.Attribute.DateTime;
+    currentPeriodStart: Schema.Attribute.DateTime;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::user-subscription.user-subscription'
+    > &
+      Schema.Attribute.Private;
+    plan: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::subscription-plan.subscription-plan'
+    >;
+    premiumPreviewsUsed: Schema.Attribute.Integer &
+      Schema.Attribute.DefaultTo<0>;
+    publishedAt: Schema.Attribute.DateTime;
+    status: Schema.Attribute.Enumeration<
+      ['active', 'canceled', 'expired', 'trialing', 'past_due']
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'active'>;
+    stripeCustomerId: Schema.Attribute.String;
+    stripeSubscriptionId: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    user: Schema.Attribute.Relation<
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
   };
 }
 
@@ -1046,7 +1155,9 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::category.category': ApiCategoryCategory;
       'api::recipe.recipe': ApiRecipeRecipe;
+      'api::subscription-plan.subscription-plan': ApiSubscriptionPlanSubscriptionPlan;
       'api::subscription.subscription': ApiSubscriptionSubscription;
+      'api::user-subscription.user-subscription': ApiUserSubscriptionUserSubscription;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

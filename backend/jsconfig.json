@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "target": "ES2021",
+    "checkJs": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "types": []
+  },
+  "exclude": [
+    "node_modules",
+    "build",
+    "dist",
+    ".cache"
+  ]
+}

@@ -1,0 +1,62 @@
+{
+    "kind": "collectionType",
+    "collectionName": "user_subscriptions",
+    "info": {
+        "singularName": "user-subscription",
+        "pluralName": "user-subscriptions",
+        "displayName": "User Subscription",
+        "description": "Reader subscription records"
+    },
+    "options": {
+        "draftAndPublish": false
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "user": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "plugin::users-permissions.user"
+        },
+        "plan": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::subscription-plan.subscription-plan",
+            "inversedBy": "user_subscriptions"
+        },
+        "stripeCustomerId": {
+            "type": "string"
+        },
+        "stripeSubscriptionId": {
+            "type": "string"
+        },
+        "status": {
+            "type": "enumeration",
+            "enum": [
+                "active",
+                "canceled",
+                "expired",
+                "trialing",
+                "past_due"
+            ],
+            "default": "active",
+            "required": true
+        },
+        "currentPeriodStart": {
+            "type": "datetime"
+        },
+        "currentPeriodEnd": {
+            "type": "datetime"
+        },
+        "cancelAtPeriodEnd": {
+            "type": "boolean",
+            "default": false
+        },
+        "canceledAt": {
+            "type": "datetime"
+        },
+        "premiumPreviewsUsed": {
+            "type": "integer",
+            "default": 0
+        }
+    }
+}

@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
   --color-primary: #10B981;
@@ -39,6 +42,14 @@
 
 /* Base Reset */
 @layer base {
+  html {
+    background-color: #ffffff;
+  }
+
+  html.dark {
+    background-color: var(--color-background);
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
@@ -55,5 +66,24 @@
     font-family: var(--font-display);
     font-weight: 700;
     letter-spacing: -0.025em;
+  }
+
+  /* Fix autofill background colors - comprehensive approach */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px rgb(245 245 245) inset !important;
+    -webkit-text-fill-color: rgb(23 23 23) !important;
+    transition: background-color 5000s ease-in-out 0s !important;
+  }
+
+  html.dark input:-webkit-autofill,
+  html.dark input:-webkit-autofill:hover,
+  html.dark input:-webkit-autofill:focus,
+  html.dark input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px rgb(31 41 55) inset !important;
+    -webkit-text-fill-color: rgb(255 255 255) !important;
+    transition: background-color 5000s ease-in-out 0s !important;
   }
 }
