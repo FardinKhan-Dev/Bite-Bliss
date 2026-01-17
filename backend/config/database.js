@@ -1,11 +1,6 @@
-import path from 'path';
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
+const path = require('path');
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-export default ({ env }) => {
+module.exports = ({ env }) => {
   const client = env('DATABASE_CLIENT', 'sqlite');
 
   const connections = {
