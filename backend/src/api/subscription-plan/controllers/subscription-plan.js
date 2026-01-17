@@ -1,4 +1,4 @@
-export default {
+module.exports = {
     async find(ctx) {
         // Call default find - return all subscription plans
         // @ts-ignore

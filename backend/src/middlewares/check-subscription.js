@@ -1,4 +1,4 @@
-export default (config, { strapi }) => {
+module.exports = (config, { strapi }) => {
     return async (ctx, next) => {
         const user = ctx.state.user;
 

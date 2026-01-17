@@ -1,4 +1,4 @@
-export default ({ strapi }) => ({
+module.exports = ({ strapi }) => ({
     /**
      * Get revenue metrics
      */

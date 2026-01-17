@@ -1,6 +1,6 @@
 import stripeService from '../services/stripe.js';
 
-export default {
+module.exports = {
     /**
      * Create checkout session
      */

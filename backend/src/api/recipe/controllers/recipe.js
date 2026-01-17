@@ -1,4 +1,4 @@
-export default {
+module.exports = {
     async find(ctx) {
         const { subscriptionTier = 0 } = ctx.state;
 
