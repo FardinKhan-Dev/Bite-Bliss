@@ -55,7 +55,18 @@ export default [
     },
   },
 
-  'strapi::cors',
+  // CORS Configuration
+  {
+    name: 'strapi::cors',
+    config: {
+      origin: process.env.CLIENT_URL
+        ? process.env.CLIENT_URL.split(',')
+        : ['http://localhost:5173', 'http://localhost:3000'],
+      credentials: true,
+      headers: '*',
+    },
+  },
+
   'strapi::poweredBy',
   'strapi::query',
   'strapi::body',
