@@ -1,7 +1,7 @@
-import server from './server/index.js';
-import admin from './strapi-admin.js';
+const server = require('./server/index.js');
+const admin = require('./strapi-admin.js');
 
-export default {
+module.exports = {
     server,
     admin,
 };

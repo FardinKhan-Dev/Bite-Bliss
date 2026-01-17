@@ -1,6 +1,6 @@
-import { GoogleGenAI } from '@google/genai';
+const { GoogleGenAI } = require('@google/genai');
 
-export default {
+module.exports = {
   async generate(ctx) {
     console.log('=== AI Generator: Function called ===');
     try {

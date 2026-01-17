@@ -1,7 +1,7 @@
-import contentApi from './content-api.js';
-import adminApi from './admin-api.js';
+const contentApi = require('./content-api.js');
+const adminApi = require('./admin-api.js');
 
-export default {
+module.exports = {
     'content-api': contentApi,
     'admin': adminApi,
 };

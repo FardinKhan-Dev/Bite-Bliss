@@ -1,5 +1,5 @@
-import generator from './generator.js';
+const generator = require('./generator.js');
 
-export default {
+module.exports = {
     generator,
 };

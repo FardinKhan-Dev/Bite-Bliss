@@ -1,1 +1,1 @@
-export default 'ai-generator';
+module.exports = 'ai-generator';

@@ -1,4 +1,4 @@
-export default {
+module.exports = {
     /**
      * Get all analytics for admin dashboard
      */

@@ -1,4 +1,4 @@
-export default ({ strapi }) => ({
+module.exports = ({ strapi }) => ({
     /**
      * Send welcome email to new users
      */

@@ -1,8 +1,8 @@
-import controllers from './server/src/controllers/index.js';
-import routes from './server/src/routes/index.js';
-import policies from './server/src/policies/index.js';
+const controllers = require('./server/src/controllers/index.js');
+const routes = require('./server/src/routes/index.js');
+const policies = require('./server/src/policies/index.js');
 
-export default () => ({
+module.exports = () => ({
     controllers,
     routes,
     policies,

@@ -1,9 +1,9 @@
 // @ts-nocheck
-import Stripe from 'stripe';
+const Stripe = require('stripe');
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-export default {
+module.exports = {
     /**
      * Create Stripe Checkout Session for subscription
      */

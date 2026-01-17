@@ -1,4 +1,4 @@
-export default {
+module.exports = {
     /**
      * Get all subscribers with search and filters
      */

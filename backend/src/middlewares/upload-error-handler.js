@@ -1,4 +1,4 @@
-export default (config, { strapi }) => {
+module.exports = (config, { strapi }) => {
     return async (ctx, next) => {
         try {
             await next();
