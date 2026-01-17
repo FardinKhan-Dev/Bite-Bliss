@@ -1,7 +1,6 @@
 {
     "name": "strapi-plugin-ai-generator",
     "version": "0.0.0",
-    "type": "module",
     "description": "AI Recipe Generator for Bite Bliss",
     "strapi": {
         "name": "ai-generator",
