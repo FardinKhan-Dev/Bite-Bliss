@@ -17,6 +17,7 @@ import SubscriptionSuccess from './pages/subscription/Success';
 import SubscriptionCancel from './pages/subscription/Cancel';
 import Account from './pages/Account';
 import Recipes from './pages/Recipes';
+import NotFound from './pages/NotFound';
 
 function App() {
     const { fetchMe } = useAuthStore();
@@ -43,6 +44,9 @@ function App() {
                             <Route path="/login" element={<Login />} />
                             <Route path="/register" element={<Register />} />
                             <Route path="/connect/google/redirect" element={<GoogleCallback />} />
+
+                            {/* 404 Catch-all route */}
+                            <Route path="*" element={<NotFound />} />
                         </Route>
                     </Routes>
                     <Toaster position="top-center" />
