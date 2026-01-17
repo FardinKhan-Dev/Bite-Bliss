@@ -4,7 +4,7 @@ import pluginId from './pluginId.js';
 import HomePage from './admin/src/pages/HomePage/index.jsx';
 import { FaWandMagicSparkles } from 'react-icons/fa6';
 
-module.exports = {
+export default {
   register(app) {
     app.addMenuLink({
       to: `/plugins/${pluginId}`,
@@ -23,7 +23,7 @@ module.exports = {
     });
   },
 
-  bootstrap(app) {},
+  bootstrap(app) { },
 
   async registerTrads({ locales }) {
     return Promise.all(

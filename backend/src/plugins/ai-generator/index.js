@@ -1,7 +1,7 @@
 import server from './server/index.js';
 import admin from './strapi-admin.js';
 
-module.exports = {
+export default {
     server,
     admin,
 };

@@ -1,6 +1,6 @@
 import { GoogleGenAI } from '@google/genai';
 
-module.exports = {
+export default {
   async generate(ctx) {
     console.log('=== AI Generator: Function called ===');
     try {

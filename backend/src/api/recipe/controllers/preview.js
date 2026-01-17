@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     async preview(ctx) {
         const { documentId } = ctx.params;
 

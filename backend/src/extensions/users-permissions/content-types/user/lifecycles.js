@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     async afterCreate(event) {
         const { result } = event;
 

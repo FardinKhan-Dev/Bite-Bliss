@@ -1,5 +1,5 @@
 import generator from './generator.js';
 
-module.exports = {
+export default {
     generator,
 };

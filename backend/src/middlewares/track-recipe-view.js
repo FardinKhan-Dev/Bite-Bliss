@@ -1,4 +1,4 @@
-module.exports = (config, { strapi }) => {
+export default (config, { strapi }) => {
     return async (ctx, next) => {
         // Only track views for recipe detail page (not list)
         if (ctx.params.documentId) {

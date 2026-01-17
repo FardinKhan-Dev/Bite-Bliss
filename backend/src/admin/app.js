@@ -1,7 +1,7 @@
 import TinyMCEEditor from './components/TinyMCEEditor.jsx';
 import Analytics from './pages/Analytics/index.jsx';
 
-module.exports = {
+export default {
     config: {
         locales: [],
     },

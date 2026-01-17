@@ -1,3 +1,1 @@
-const pluginId = 'ai-generator';
-
-module.exports = pluginId;
+export default 'ai-generator';

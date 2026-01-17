@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     async search(ctx) {
         try {
             const { q, category, maxCookingTime, page = 1, pageSize = 12 } = ctx.query;

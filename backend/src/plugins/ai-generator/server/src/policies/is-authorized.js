@@ -1,4 +1,4 @@
-module.exports = async (policyContext, config, { strapi }) => {
+export default async (policyContext, config, { strapi }) => {
     const { userAbility } = policyContext.state;
 
     // Check if user is authenticated

@@ -1,5 +1,5 @@
 import isAuthorized from './is-authorized.js';
 
-module.exports = {
+export default {
     'is-authorized': isAuthorized,
 };
