@@ -44,10 +44,10 @@ function App() {
                             <Route path="/login" element={<Login />} />
                             <Route path="/register" element={<Register />} />
                             <Route path="/connect/google/redirect" element={<GoogleCallback />} />
-
-                            {/* 404 Catch-all route */}
-                            <Route path="*" element={<NotFound />} />
                         </Route>
+
+                        {/* 404 page without Layout */}
+                        <Route path="*" element={<NotFound />} />
                     </Routes>
                     <Toaster position="top-center" />
                 </BrowserRouter>

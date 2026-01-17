@@ -4,7 +4,7 @@ import { FaHome, FaUtensils, FaArrowRight } from 'react-icons/fa';
 
 const NotFound = () => {
     return (
-        <div className="min-h-screen bg-gradient-to-br from-orange-900 via-red-900 to-neutral-900 relative overflow-hidden flex items-center justify-center">
+        <div className="min-h-screen bg-linear-to-br from-orange-900 via-red-900 to-neutral-900 relative overflow-hidden flex items-center justify-center">
             {/* Animated Background Elements */}
             <div className="absolute inset-0 overflow-hidden">
                 {/* Floating food emojis */}
@@ -61,7 +61,7 @@ const NotFound = () => {
             </div>
 
             {/* Content */}
-            <div className="relative z-10 text-center px-6 max-w-4xl">
+            <div className="relative z-10 text-center my-20 px-6 max-w-4xl">
                 {/* 404 Number */}
                 <motion.div
                     initial={{ scale: 0, rotate: -180 }}
@@ -73,7 +73,7 @@ const NotFound = () => {
                     }}
                     className="mb-8"
                 >
-                    <h1 className="text-[180px] md:text-[280px] font-black leading-none bg-gradient-to-br from-orange-400 via-red-400 to-pink-400 bg-clip-text text-transparent select-none">
+                    <h1 className="text-[180px] md:text-[280px] font-black leading-none bg-linear-to-br from-orange-400 via-red-400 to-pink-400 bg-clip-text text-transparent select-none">
                         404
                     </h1>
                 </motion.div>
@@ -137,7 +137,7 @@ const NotFound = () => {
                 >
                     <Link
                         to="/"
-                        className="group px-8 py-4 bg-gradient-to-r from-emerald-500 to-green-600 text-white rounded-full font-bold text-lg hover:from-emerald-600 hover:to-green-700 transition-all shadow-xl hover:shadow-emerald-500/50 flex items-center gap-3"
+                        className="group px-8 py-4 bg-linear-to-r from-emerald-500 to-green-600 text-white rounded-full font-bold text-lg hover:from-emerald-600 hover:to-green-700 transition-all shadow-xl hover:shadow-emerald-500/50 flex items-center gap-3"
                     >
                         <FaHome className="text-xl" />
                         Back to Home
