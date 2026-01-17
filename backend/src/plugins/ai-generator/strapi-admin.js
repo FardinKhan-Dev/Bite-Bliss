@@ -1,10 +1,10 @@
 // @ts-ignore
-const pluginPkg = require('./package.json');
-const pluginId = require('./pluginId.js');
-const HomePage = require('./admin/src/pages/HomePage/index.jsx');
-const { FaWandMagicSparkles } = require('react-icons/fa6');
+import pluginPkg from './package.json';
+import pluginId from './pluginId.js';
+import HomePage from './admin/src/pages/HomePage/index.jsx';
+import { FaWandMagicSparkles } from 'react-icons/fa6';
 
-module.exports = {
+export default {
   register(app) {
     app.addMenuLink({
       to: `/plugins/${pluginId}`,

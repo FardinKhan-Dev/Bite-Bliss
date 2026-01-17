@@ -1,7 +1,7 @@
 const TinyMCEEditor = require('./components/TinyMCEEditor.jsx');
 const Analytics = require('./pages/Analytics/index.jsx');
 
-module.exports = {
+export default {
     config: {
         locales: [],
     },
