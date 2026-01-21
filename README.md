@@ -2,6 +2,9 @@
 
 <div align="center">
 
+![Bite Bliss Banner](.github/screenshots/banner.png)
+
+
 ![Bite Bliss](https://img.shields.io/badge/Bite%20Bliss-Premium%20Food%20Blog-10B981?style=for-the-badge&logo=react)
 [![License](https://img.shields.io/badge/License-Proprietary-red?style=for-the-badge)](LICENSE)
 [![React](https://img.shields.io/badge/React-19.2.0-61DAFB?style=for-the-badge&logo=react)](https://reactjs.org/)
@@ -117,6 +120,34 @@
 </table>
 
 *Seamless theme switching across all pages*
+
+---
+
+### 📱 Mobile & Responsive Views
+<table>
+<tr>
+<td width="33%">
+
+![Mobile Home](.github/screenshots/mobile-home.png)
+*Mobile Home*
+
+</td>
+<td width="33%">
+
+![Mobile Recipes](.github/screenshots/mobile-recipes.png)
+*Mobile Recipes*
+
+</td>
+<td width="33%">
+
+![Mobile Account](.github/screenshots/mobile-account.png)
+*Mobile Account*
+
+</td>
+</tr>
+</table>
+
+*Fully responsive design optimized for all screen sizes*
 
 </div>
 

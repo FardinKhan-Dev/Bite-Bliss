@@ -1,5 +1,5 @@
-const TinyMCEEditor = require('./components/TinyMCEEditor.jsx');
-const Analytics = require('./pages/Analytics/index.jsx');
+import TinyMCEEditor from './components/TinyMCEEditor.jsx';
+import Analytics from './pages/Analytics/index.jsx';
 
 export default {
     config: {
