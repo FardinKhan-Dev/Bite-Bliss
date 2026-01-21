@@ -17,16 +17,15 @@ module.exports = {
         // No additional filtering needed
 
         // Fetch recipes using entity service
-        const { results, pagination } = await strapi.documents('api::recipe.recipe').findMany({
+        const recipes = await strapi.documents('api::recipe.recipe').findMany({
             ...ctx.query,
             populate: ctx.query.populate || '*',
         });
 
         // Add subscription info to response
         return {
-            data: results,
+            data: recipes,
             meta: {
-                pagination,
                 subscriptionTier,
             },
         };
