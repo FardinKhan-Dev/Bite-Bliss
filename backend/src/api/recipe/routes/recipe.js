@@ -16,5 +16,32 @@ module.exports = {
                 middlewares: ['global::check-subscription', 'global::track-recipe-view'],
             },
         },
+        // Search routes
+        {
+            method: 'GET',
+            path: '/recipes/search',
+            handler: 'search.search',
+            config: {
+                middlewares: ['global::check-subscription'],
+                auth: false,
+            },
+        },
+        {
+            method: 'GET',
+            path: '/recipes/filters',
+            handler: 'search.getFilters',
+            config: {
+                auth: false,
+            },
+        },
+        // Preview route
+        {
+            method: 'GET',
+            path: '/recipes/preview/:documentId',
+            handler: 'preview.preview',
+            config: {
+                middlewares: ['global::check-subscription'],
+            },
+        },
     ],
 };
