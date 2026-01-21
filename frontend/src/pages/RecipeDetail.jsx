@@ -23,6 +23,32 @@ export default function RecipeDetail() {
         },
     });
 
+    // Helper function to render Strapi Blocks format
+    const renderBlocks = (blocks) => {
+        if (!blocks) return null;
+        if (typeof blocks === 'string') return <p>{blocks}</p>;
+
+        if (Array.isArray(blocks)) {
+            return blocks.map((block, index) => {
+                if (block.type === 'paragraph') {
+                    return <p key={index} className="mb-4">{block.children?.map(child => child.text).join('')}</p>;
+                }
+                if (block.type === 'list') {
+                    const ListTag = block.format === 'ordered' ? 'ol' : 'ul';
+                    return (
+                        <ListTag key={index} className="list-disc list-inside mb-4 space-y-2">
+                            {block.children?.map((item, i) => (
+                                <li key={i}>{item.children?.map(child => child.text).join('')}</li>
+                            ))}
+                        </ListTag>
+                    );
+                }
+                return null;
+            });
+        }
+        return null;
+    };
+
     const isLocked = recipe?.isPremium && !isAuthenticated;
 
     if (isLoading) return (
@@ -145,7 +171,7 @@ export default function RecipeDetail() {
                             <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
                                 {recipe.instructions ? (
                                     <div className="prose prose-invert prose-lg max-w-none">
-                                        {typeof recipe.instructions === 'string' ? recipe.instructions : 'See instructions in recipe'}
+                                        {renderBlocks(recipe.instructions)}
                                     </div>
                                 ) : (
                                     <p className="text-gray-400">Instructions not available</p>
