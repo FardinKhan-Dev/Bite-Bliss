@@ -3,12 +3,10 @@ import { useParams, Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { motion } from 'framer-motion';
 import { api } from '../lib/axios';
-import Navbar from '../components/ui/Navbar';
 import PremiumPaywall from '../components/PremiumPaywall';
 import PremiumBadge from '../components/PremiumBadge';
 import { useAuthStore } from '../store/useAuthStore';
 import { FaClock, FaUser, FaHeart, FaShare } from 'react-icons/fa';
-import Footer from '../components/ui/Footer';
 
 export default function RecipeDetail() {
     const { slug } = useParams();
@@ -158,7 +156,7 @@ export default function RecipeDetail() {
                             <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
                                 {recipe.ingredients ? (
                                     <div className="prose prose-invert max-w-none">
-                                        {typeof recipe.ingredients === 'string' ? recipe.ingredients : 'See ingredients in recipe'}
+                                        {renderBlocks(recipe.ingredients)}
                                     </div>
                                 ) : (
                                     <p className="text-gray-400">Ingredients list not available</p>
@@ -183,9 +181,6 @@ export default function RecipeDetail() {
             </div>
 
             {showPaywall && <PremiumPaywall recipeName={recipe.title} onClose={() => setShowPaywall(false)} />}
-
-            {/* Footer */}
-            <Footer />
         </div>
     );
 }
