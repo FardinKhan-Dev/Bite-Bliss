@@ -16,14 +16,17 @@ module.exports = {
         // Premium (tier 1) and Chef's Circle (tier 2): Show all recipes
         // No additional filtering needed
 
-        // Call default controller
-        const { data, meta } = await super.find(ctx);
+        // Fetch recipes using entity service
+        const { results, pagination } = await strapi.documents('api::recipe.recipe').findMany({
+            ...ctx.query,
+            populate: ctx.query.populate || '*',
+        });
 
         // Add subscription info to response
         return {
-            data,
+            data: results,
             meta: {
-                ...meta,
+                pagination,
                 subscriptionTier,
             },
         };
@@ -31,13 +34,16 @@ module.exports = {
 
     async findOne(ctx) {
         const { subscriptionTier = 0 } = ctx.state;
+        const { documentId } = ctx.params;
 
-        // Get the recipe
-        const response = await super.findOne(ctx);
-        const recipe = response.data;
+        // Get the recipe using entity service
+        const recipe = await strapi.documents('api::recipe.recipe').findOne({
+            documentId,
+            populate: '*',
+        });
 
         if (!recipe) {
-            return response;
+            return ctx.notFound('Recipe not found');
         }
 
         // If recipe is premium and user is on free tier, return locked version
@@ -57,6 +63,6 @@ module.exports = {
         }
 
         // Return full recipe
-        return response;
+        return { data: recipe };
     },
 };
